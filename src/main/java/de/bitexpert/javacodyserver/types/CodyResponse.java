@@ -12,10 +12,9 @@ import java.util.function.Function;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CodyResponse {
-
 	String[] cody;
-	String[]         details;
-	CodyResponseType type;
+	String[] details;
+	CodyResponseType type = CodyResponseType.INFO;
 
 	/**
 	 * Required if this response is a question. This callback will handle the reply based
@@ -29,5 +28,4 @@ public class CodyResponse {
 		this.details = new String[] {details};
 		this.type = type;
 	}
-
 }

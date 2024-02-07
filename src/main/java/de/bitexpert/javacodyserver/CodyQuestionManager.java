@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.function.Function;
 
 @Component
-public class QuestionManager {
+public class CodyQuestionManager {
 
 	@Setter
 	private Function<String, CodyResponse> currentReplyCallback;
@@ -18,7 +18,7 @@ public class QuestionManager {
 	 */
 	public CodyResponse checkQuestion(CodyResponse codyResponse) {
 
-		if (codyResponse.getType().equals(CodyResponseType.Question) &&
+		if (codyResponse.getType().equals(CodyResponseType.QUESTION) &&
 			codyResponse.getReplyCallback() != null) {
 			currentReplyCallback = codyResponse.getReplyCallback();
 		}
@@ -39,25 +39,28 @@ public class QuestionManager {
 		return new CodyResponse(
 			"Sorry, not sure what to say.",
 			"Did I ask anything?",
-			CodyResponseType.Warning
+			CodyResponseType.WARNING
 		);
 	}
 
+	/**
+	 * This Cody response is used to test the question/reply functionality.
+	 */
 	public CodyResponse getTestQuestion() {
 		Function<String, CodyResponse> replyCallback = (reply) -> {
-			System.out.printf("Replied with: %s", reply);
+			System.out.printf("Replied with: %s%n", reply);
 
 			return new CodyResponse(
 					reply.equals("no") ? "Oh ok, maybe I can convince you that bots are awesome." : "Cool! I like you, too",
 					reply.equals("no") ? ":tears:" : ":cody_dance:",
-					CodyResponseType.Info
+					CodyResponseType.INFO
 			);
 		};
 
 		return new CodyResponse(
 			new String[]{"Do you like bots?"},
 			new String[]{"Answer with: Yes|no"},
-			CodyResponseType.Question,
+			CodyResponseType.QUESTION,
 			replyCallback
 		);
 	}

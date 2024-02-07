@@ -1,9 +1,12 @@
 package de.bitexpert.javacodyserver.types;
 
-// TODO: make uppercase and use @JsonProperty
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum CodyResponseType {
-	Info,
-	Error,
-	Warning,
-	Question
+	@JsonProperty("Info") INFO,
+	@JsonProperty("Error") ERROR,
+	@JsonProperty("Warning") WARNING,
+	@JsonProperty("Question") QUESTION,
+	@JsonProperty("SyncRequired") SYNC_REQUIRED,
+	@JsonProperty("Empty") EMPTY
 }

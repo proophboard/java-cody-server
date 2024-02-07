@@ -3,7 +3,6 @@ package de.bitexpert.javacodyserver;
 import de.bitexpert.javacodyserver.types.*;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,10 +13,12 @@ public class CodyConfig {
 	Map<String, Hook> hooks = new HashMap<>();
 
 	CodyConfig() {
-		// add your hooks here
+		// add your hooks here!
+
+		// "onCommand" example
 		addHook("onCommand", (Node, CodyConfigContext) -> {
 			System.out.println("onCommand");
-			return new CodyResponse("Command hook executed", "All good", CodyResponseType.Info);
+			return new CodyResponse("onCommand hook executed.", "It does nothing yet, though.", CodyResponseType.INFO);
 		});
 	}
 
