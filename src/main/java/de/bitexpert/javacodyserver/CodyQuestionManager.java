@@ -3,10 +3,12 @@ package de.bitexpert.javacodyserver;
 import de.bitexpert.javacodyserver.types.CodyResponse;
 import de.bitexpert.javacodyserver.types.CodyResponseType;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
+@Slf4j
 @Component
 public class CodyQuestionManager {
 
@@ -48,7 +50,7 @@ public class CodyQuestionManager {
 	 */
 	public CodyResponse getTestQuestion() {
 		Function<String, CodyResponse> replyCallback = (reply) -> {
-			System.out.printf("Replied with: %s%n", reply);
+			log.info("Replied with: {}", reply);
 
 			return new CodyResponse(
 					reply.equals("no") ? "Oh ok, maybe I can convince you that bots are awesome." : "Cool! I like you, too",

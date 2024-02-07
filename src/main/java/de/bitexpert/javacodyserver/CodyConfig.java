@@ -2,11 +2,13 @@ package de.bitexpert.javacodyserver;
 
 import de.bitexpert.javacodyserver.types.*;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
 @Getter
+@Slf4j
 @Component
 public class CodyConfig {
 	CodyConfigContext context = new CodyConfigContext();
@@ -17,7 +19,7 @@ public class CodyConfig {
 
 		// "onCommand" example
 		addHook("onCommand", (Node, CodyConfigContext) -> {
-			System.out.println("onCommand");
+			log.info("onCommand");
 			return new CodyResponse("onCommand hook executed.", "It does nothing yet, though.", CodyResponseType.INFO);
 		});
 	}

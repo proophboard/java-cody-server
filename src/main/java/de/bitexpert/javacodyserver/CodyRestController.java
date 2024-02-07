@@ -1,11 +1,13 @@
 package de.bitexpert.javacodyserver;
 
 import de.bitexpert.javacodyserver.types.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
+@Slf4j
 @RequestMapping("/messages")
 public class CodyRestController {
 	private final CodyConfig          config;
@@ -22,7 +24,7 @@ public class CodyRestController {
 	 */
 	@PostMapping("/IioSaidHello")
 	public CodyResponse iioSaidHello(@RequestBody IioSaidHello body) {
-		System.out.println("IioSaidHello");
+		log.info("IioSaidHello");
 
 		return new CodyResponse(
 			new String[]{String.format("Hey %s, Cody here. Before we can start, I need to sync the board. This might take a moment.", body.getUser())},
@@ -37,7 +39,7 @@ public class CodyRestController {
 	 */
 	@PostMapping("/UserReplied")
 	public CodyResponse userReplied(@RequestBody Reply body) {
-		System.out.println("UserReplied");
+		log.info("UserReplied");
 
 		return codyQuestionManager.checkQuestion(codyQuestionManager.handleReply(body.getReply()));
 	}
@@ -47,7 +49,7 @@ public class CodyRestController {
 	 */
 	@PostMapping("/ElementEdited")
 	public CodyResponse elementEdited(@RequestBody ElementEdited body) {
-		System.out.println("elementEdited");
+		log.info("elementEdited");
 
 		// update persistent context
 		if (body.getContext() != null) {
@@ -87,7 +89,7 @@ public class CodyRestController {
 	 */
 	@PostMapping("/ConfirmTest")
 	public CodyResponse confirmTest() {
-		System.out.println("ConfirmTest");
+		log.info("ConfirmTest");
 
 		return codyQuestionManager.checkQuestion(codyQuestionManager.getTestQuestion());
 	}
