@@ -1,4 +1,4 @@
-package de.bitexpert.javacodyserver.general;
+package de.bitexpert.javacodyserver.types;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,7 +14,7 @@ import java.util.function.Function;
 public class CodyResponse {
 
 	String[] cody;
-	String[] details;
+	String[]         details;
 	CodyResponseType type;
 
 	/**

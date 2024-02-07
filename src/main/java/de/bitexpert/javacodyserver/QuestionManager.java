@@ -1,7 +1,7 @@
 package de.bitexpert.javacodyserver;
 
-import de.bitexpert.javacodyserver.general.CodyResponse;
-import de.bitexpert.javacodyserver.general.CodyResponseType;
+import de.bitexpert.javacodyserver.types.CodyResponse;
+import de.bitexpert.javacodyserver.types.CodyResponseType;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 

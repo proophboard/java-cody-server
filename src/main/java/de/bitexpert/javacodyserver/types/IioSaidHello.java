@@ -1,4 +1,4 @@
-package de.bitexpert.javacodyserver.general;
+package de.bitexpert.javacodyserver.types;
 
 import lombok.*;
 
