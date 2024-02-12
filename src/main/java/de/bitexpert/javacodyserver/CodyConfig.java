@@ -15,9 +15,7 @@ public class CodyConfig {
 	Map<String, Hook> hooks = new HashMap<>();
 
 	CodyConfig() {
-		// add your hooks here!
-
-		// "onCommand" example
+		// "onCommand" hook example
 		addHook("onCommand", (Node, CodyConfigContext) -> {
 			log.info("onCommand");
 			return new CodyResponse("onCommand hook executed.", "It does nothing yet, though.", CodyResponseType.INFO);

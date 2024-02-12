@@ -58,6 +58,7 @@ public class CodyRestController {
 			config.getContext().setUserId(body.getContext().getUserId());
 		}
 
+		// TODO: add additional error handling for invalid node in body
 		// TODO: do optional sync here
 
 		// handle edited element
